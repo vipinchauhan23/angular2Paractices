@@ -1,0 +1,42 @@
+<div class="">
+  <table class="striped">
+    <thead>
+      <tr>
+        <th data-field="name">Test Title</th>
+        <th data-field="price">Test Start Date</th>
+        <th data-field="price">Test End Date</th>
+        <th data-field="price">Question Set Id</th>
+        <th data-field="name">Test Support Text</th>
+        <th data-field="price">Test Eperience Years</th>
+        <th data-field="price">Edit</th>
+        <th data-field="price">Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of onlineTestData">
+        <td>{{item.online_test_title}}</td>
+        <td>{{item.test_start_date}}</td>
+        <td>{{item.test_end_date}}</td>
+        <td>{{item.question_set_id}}</td>
+        <td>{{item.test_support_text}}</td>
+        <td>{{item.test_experience_years}}</td>
+        <td>
+          <button class="btn-floating btn-Medium green" title="edit" (click)="showTest(item.online_test_id)">
+            <i class="Medium material-icons">mode_edit</i>
+            </button>
+        </td>
+        <td>
+          <a class="btn-floating btn-Medium red" title="remove" (click)="removeTest(item)">
+            <i class="Medium material-icons">delete</i>
+          </a>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <button name="addOnlineTest" class="btn btn-info btn-block" (click)="showTest(0)"><i class="material-icons left">add</i>
+   Add Test
+   </button>
+</div>

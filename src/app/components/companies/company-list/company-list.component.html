@@ -1,0 +1,26 @@
+<p>
+  Company List
+</p>
+
+<div class="col-md-6">
+  <button name="addCompany" class="btn btn-info btn-block pull-right" (click)="addCompany()">+ Add Company</button>
+  <table class="table TFtable">
+    <tr style="background: #dae5f4;">
+      <td>Company Title</td>
+      <td>Company Url</td>
+      <td>Company Email</td>
+      <td>Company Phone</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let company of model" style="cursor:hand;" (click)="selectCompany(company)">
+      <td><a (click)="editCompany(company.company_id)"> {{company.company_title}}</a></td>
+      <td>{{company.company_url}}</td>
+      <td>{{company.company_email}}</td>
+      <td>{{company.company_phone}}</td>
+      <td><a>delete</a></td>
+    </tr>
+  </table>
+</div>
+<div class="col-md-6">
+
+</div>

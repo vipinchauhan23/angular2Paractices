@@ -1,0 +1,63 @@
+<!--component html goes here -->
+<div materialize style='margin-left:15%; margin-top:3%'>
+  <div class="row">
+    <div class="input-field col s6">
+      <label for="date" class="flow-text active">Date</label>
+      <input [(ngModel)]="model.date" id="date" materialize="pickadate" placeholder="Date:dd/mm/yyyy" [materializeParams]="[{selectMonths: true, selectYears: 15, format:'dd/mm/yyyy'}]"
+        type="text" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <select [(ngModel)]="model.type" name="selectTypeOption" materialize="material_select" [materializeSelectOptions]="transactionType">
+                    <option value="0" disabled selected>Choose Transaction Type</option>
+                    <option *ngFor="let trans of transactionTypes" [value]="trans.value">{{trans.name}}</option>
+                </select>
+      <label for="selectTypeOption" class="active" style="top:2px;">Select Transaction Type</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <select [(ngModel)]="model.employee_id" name="selectEmployeeOption" materialize="material_select" [materializeSelectOptions]="employeeArray"
+        (change)="onSelectEmployee($event.target.value)">
+                    <option value="0" disabled selected>Choose Employee</option>
+                    <option *ngFor="let emp of employeeArray" [value]="emp.employee_id">{{emp.employee_name + ' ( ' + emp.balance + ' )'}}</option>
+                </select>
+      <label for="selectEmployeeOption" class="active" style="top:2px;">Select Employee</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" id="amount" type="number" placeholder="Amount" [(ngModel)]="model.amount" [ngModelOptions]="{standalone: true}">
+      <label for="amount" class="flow-text active">Amount</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" id="pancard_no" type="text" placeholder="Pancard Number" [(ngModel)]="model.pancard_no" [ngModelOptions]="{standalone: true}">
+      <label for="pancard_no" class="flow-text active">Pancard Number</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <a class="waves-effect waves-light btn" (click)="saveEmployeeTransaction()">
+        <i class="material-icons left">save</i> {{btnText}}
+      </a>
+      <a style="margin-left:2%;" class="waves-effect waves-light btn red" (click)="cancel()">
+        <i class="material-icons left">cancel</i> Cancel
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" id="grid_number" type="text" placeholder="Grid Number" [(ngModel)]="model.grid_number" [ngModelOptions]="{standalone: true}"
+        (change)=changeNumber()>
+      <label for="grid_number" class="flow-text active">Grid Number</label>
+    </div>
+  </div>
+  <div class="row" *ngFor="let abc of showGrid">
+    {{abc}}
+  </div>
+  <label>ForwordDiagnal Sum:{{forwordDiagnal}}</label>
+  <label>BackwordDiagnal Sum:{{backwordDiagnal}}</label>
+</div>

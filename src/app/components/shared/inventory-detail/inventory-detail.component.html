@@ -1,0 +1,24 @@
+<!--component html goes here -->
+<div class="row" *ngFor="let invent of inventoryDetailModel;let i=index">
+    <div class="input-field col s3">
+      <select [(ngModel)]="invent.item_id" name="selectItemOption" materialize="material_select" [materializeSelectOptions]="itemArray"
+        (change)=onItemSelect($event.target.value,i)>
+                    <option value="0" disabled selected>Choose Item</option>
+                    <option *ngFor="let item of itemArray" [value]="item.items_id">{{item.item + " (" + item.stock + ")"}}</option>
+                </select>
+      <label for="selectItemOption" class="active" style="top:2px;">Select Item</label>
+    </div>
+    <div class="input-field col s3">
+      <input class="validate" id="item_rate" type="number" placeholder="Item Rate" [(ngModel)]="invent.item_rate"
+        [ngModelOptions]="{standalone: true}" (blur)="changeValue(i)">
+      <label for="item_rate" class="flow-text active">Item Rate</label>
+    </div>
+    <div class="input-field col s2">
+      <input class="validate" id="quantity" type="number" placeholder="Quantity" [(ngModel)]="invent.quantity" [ngModelOptions]="{standalone: true}"
+        (blur)="changeValue(i)">
+      <label for="quantity" class="flow-text active">Quantity</label>
+    </div>
+    <div class="input-field col s2">
+      <label for="total" class="flow-text active">Total: {{invent.sub_total}}</label>
+    </div>
+  </div>

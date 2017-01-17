@@ -1,0 +1,48 @@
+<!--component html goes here -->
+<!--component html goes here -->
+<div materialize style='margin-left:5%; margin-top:3%'>
+  <div class="row">
+    <div class="input-field col s9">
+      <input class="validate" id="product_name" type="text" placeholder="Product Name" [(ngModel)]="model.product_name" [ngModelOptions]="{standalone: true}">
+      <label for="product_name" class="flow-text active">Product Name</label>
+    </div>
+    <div class="input-field col s9">
+      <input class="validate" id="product_code" type="text" placeholder="Product Code" [(ngModel)]="model.product_code" [ngModelOptions]="{standalone: true}">
+      <label for="country_code" class="flow-text active">Product Code</label>
+    </div>
+
+    <div class="input-field col s9">
+      <select [(ngModel)]="model.item_id" name="selectItemOption" materialize="material_select" [materializeSelectOptions]="itemArray"
+        (change)=onItemSelect($event.target.value)>
+                    <option value="0" disabled selected>Choose Item</option>
+                    <option *ngFor="let item of itemArray" [value]="item.items_id">{{item.item}}</option>
+                </select>
+      <label for="selectItemOption" class="active" style="top:2px;">Select Item</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s3">
+      <input class="validate" id="item_rate" type="number" placeholder="Item Rate" [(ngModel)]="model.item_rate" [ngModelOptions]="{standalone: true}">
+      <label for="item_rate" class="flow-text active">Item Rate</label>
+    </div>
+    <div class="input-field col s3" >
+      <input class="validate" id="quantity" type="number" placeholder="Quantity" [(ngModel)]="model.quantity" [ngModelOptions]="{standalone: true}">
+      <label for="quantity" class="flow-text active">Quantity</label>
+    </div>
+    <div class="input-field col s3" >
+      <input class="validate" id="toatl" type="number" placeholder="Total" [(ngModel)]="model.total" [ngModelOptions]="{standalone: true}">
+      <label for="total" class="flow-text active">Total</label>
+    </div>
+  </div>
+<div class="row">
+  <div class="input-field col s2"></div>
+  <div class="input-field col s6">
+    <a class="waves-effect waves-light btn" (click)="saveProduct()">
+      <i class="material-icons left">save</i> {{btnText}}
+    </a>
+    <a style="margin-left:2%;" class="waves-effect waves-light btn red" (click)="cancel()">
+      <i class="material-icons left">cancel</i> Cancel
+    </a>
+  </div>
+</div>
+</div>

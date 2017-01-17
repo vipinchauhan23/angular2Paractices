@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+  <title>Online Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="styles.css">
+<link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css"/>
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Rajdhani' rel='stylesheet' type='text/css'>
+  <link href="app/components/shared/froala/font-awesome.min.css" rel="stylesheet" type="text/css" />
+ <!-- Include Froala Editor styles -->
+  <link rel="stylesheet" href="app/components/shared/froala/froala_editor.min.css" />
+  <link rel="stylesheet" href="app/components/shared/froala/froala_style.min.css" />
+  <link rel="stylesheet" href="app/components/shared/froala/froala_editor.pkgd.css" />
+  <!-- Include Froala Editor -->
+  <script src="app/components/shared/froala/script/froala_editor.min.js"></script>
+  <script src="app/components/shared/froala/script/froala_editor.pkgd.min.js"></script>
+  <!-- IE required polyfills, in this exact order -->
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+  <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+
+  <script>
+    System.import('system-config.js').then(function () {
+        System.import('main');
+      }).catch(console.error.bind(console));
+  </script>
+</head>
+
+<body>
+  <my-app>Loading...</my-app>
+</body>
+
+</html>

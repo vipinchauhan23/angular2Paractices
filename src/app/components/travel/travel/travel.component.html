@@ -1,0 +1,53 @@
+<!--component html goes here -->
+<div materialize style='margin-left:5%; margin-top:8%'>
+  <div class="row">
+    <div class="input-field col s5">
+      <label for="date" class="flow-text active">Date</label>
+      <input [(ngModel)]="model.travel_date" id="date" materialize="pickadate" placeholder="dd/mm/yyyy" [materializeParams]="[{selectMonths: true, selectYears: 15, format:'dd/mm/yyyy'}]"
+        type="text" />
+    </div>
+    <div class="input-field col s5" style='margin-left:10%;'>
+      <input class="validate" id="employee_name" type="text" placeholder="Employee Name" [(ngModel)]="model.employee_name" [ngModelOptions]="{standalone: true}">
+      <label for="employee_name" class="flow-text active">Employee Name</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s5">
+      <input class="validate" id="advance" type="text" placeholder="Advance" [(ngModel)]="model.advance" [ngModelOptions]="{standalone: true}">
+      <label for="advance" class="flow-text active">Advance</label>
+    </div>
+
+    <div class="input-field col s5" style='margin-left:10%;'>
+      <input type="checkbox" id="is_active" [(ngModel)]="model.is_active" [ngModelOptions]="{standalone: true}" (change)="enableTravelDetails()"/>
+      <label for="is_active">Is Active</label>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="showTravelDetails">
+    <div *ngFor="let travelDetail of model.travelDetails">
+      <div class="input-field col s2">
+        <input class="validate" id="from" type="text" placeholder="Advance" [(ngModel)]="travelDetail.from" [ngModelOptions]="{standalone: true}">
+        <label for="from" class="flow-text active">From</label>
+      </div>
+      <div class="input-field col s3" style='margin-left:2%;'>
+        <label for="from_date" class="flow-text active">From-Date</label>
+        <input [(ngModel)]="travelDetail.from_date" id="from_date" materialize="pickadate" placeholder="From-Date:dd/mm/yyyy" [materializeParams]="[{selectMonths: true, selectYears: 15, format:'dd/mm/yyyy'}]"
+          type="text" />
+      </div>
+      <div class="input-field col s2" style='margin-left:2%;'>
+        <input class="validate" id="to" type="text" placeholder="to" [(ngModel)]="travelDetail.to" [ngModelOptions]="{standalone: true}">
+        <label for="to" class="flow-text active">To</label>
+      </div>
+      <div class="input-field col s3" style='margin-left:2%;'>
+        <label for="to_date" class="flow-text active">To-Date</label>
+        <input [(ngModel)]="travelDetail.to_date" id="to_date" materialize="pickadate" placeholder="To-Date:dd/mm/yyyy" [materializeParams]="[{selectMonths: true, selectYears: 15, format:'dd/mm/yyyy'}]"
+          type="text" />
+      </div>
+    </div>
+    <button style=" margin-left:1%; margin-top:1%" class="btn-floating btn-Medium green" title="add" (click)="addTravelDetails()">
+            <i class="Medium material-icons">add</i>
+     </button>
+  </div>
+
+  <button class="waves-effect waves-light btn" type="button" (click)="saveTravel()">{{btnText}}</button>
+</div>

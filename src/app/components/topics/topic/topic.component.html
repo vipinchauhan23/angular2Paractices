@@ -1,0 +1,17 @@
+<style>
+  control-messages {
+    color: #EB7077;
+  }
+</style>
+
+<div materialize>
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" type="text" id="topic_title" placeholder="Topic Title" [(ngModel)]="model.topic_title" [ngModelOptions]="{standalone: true}"
+      />
+      <label for="topic_title">Topic Title</label>
+    </div>
+  </div>
+
+  <button class="waves-effect waves-light btn" type="button" (click)="saveTopic()">{{btnText}}</button>
+</div>

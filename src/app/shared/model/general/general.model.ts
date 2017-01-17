@@ -1,0 +1,25 @@
+export class General {
+  general_id: number = 0;
+  telephone: number = 0;
+  connect_person: string = '';
+  mobile_phone: number = 0;
+  email: string = '';
+  remark: string = '';
+  web_site: string = '';
+  shipping_id: number = 0;
+  sales_employee_id: number = 0;
+  password: string = '';
+  bp_project: string = '';
+  bp_channel_code: string = '';
+  industry_id: number = 0;
+  technician: string = '';
+  alias_name: string = '';
+  language_id: number = 0;
+  send_marketing_content: number = 0;
+  active:number = 0;
+  inactive: number = 0;
+  advance:number = 0;
+  to: string = '';
+  from: string = '';
+  user_remark: string = '';
+  businesspartnermaster_id: number = 0; }

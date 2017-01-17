@@ -1,0 +1,108 @@
+<div class="container ">
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input class="validate" id="online_test_title" type="text" placeholder="online_test_title" [(ngModel)]="model.online_test_title"
+        [ngModelOptions]="{standalone: true}">
+      <label for="online_test_title" class="flow-text ">Online Test Title</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s3">
+      <label for="test_start_date">Test Start Date</label>
+      <input id="test_start_date" materialize="pickadate" placeholder="dd/mm/yyyy" [materializeParams]="[{selectMonths: true, selectYears: 15, format:'dd/mm/yyyy'}]"
+        [(ngModel)]="model.test_start_date" type="text" [ngModelOptions]="{standalone: true}" />
+    </div>
+    <div class="input-field col s3">
+      <input class="validate ng-valid ng-dirty ng-touched flow-text" type="time" id="test_start_time" [(ngModel)]="model.test_start_time"
+        [ngModelOptions]="{standalone: true}" placeholder="Start Time" />
+      <label for="test_start_time" style="margin-top:-25px;font-size:0.8rem">Start Time</label>
+    </div>
+    <div class="input-field col s3">
+      <label for="test_end_date">Test End Date</label>
+      <input id="test_end_date" materialize="pickadate" placeholder="dd/mm/yyyy" [materializeParams]="[{selectMonths: true, selectYears: 15, format:'dd/mm/yyyy'}]"
+        [(ngModel)]="model.test_end_date" type="text" [ngModelOptions]="{standalone: true}" />
+    </div>
+    <div class="input-field col s3">
+      <input class="validate ng-valid ng-dirty ng-touched flow-text" type="time" id="test_end_time" [(ngModel)]="model.test_end_time"
+        [ngModelOptions]="{standalone: true}" placeholder="End Time" />
+      <label for="test_end_time" style="margin-top:-25px;font-size:0.8rem">End Time</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="test_support_text" class="materialize-textarea validate" placeholder="support text" [(ngModel)]="model.test_support_text"
+        [ngModelOptions]="{standalone: true}"></textarea>
+      <label for="test_support_text" class="active">Test Support Text</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <select [(ngModel)]="model.question_set_id" name="model.question_set_id" materialize="material_select">
+                    <option value="0" disabled selected>Choose Your Question Set</option>
+                    <option *ngFor="let qSet of questionSets" [value]="qSet.question_set_id">{{qSet.question_set_title}}</option>
+                </select>
+      <label for="model.question_set_id" class="active" style="top:2px;">Question Set ID</label>
+    </div>
+    <div class="input-field col s6">
+      <input class="validate" id="test_experience_years" type="number" placeholder="test_experience_years" [(ngModel)]="model.test_experience_years"
+        [ngModelOptions]="{standalone: true}">
+      <label for="test_experience_years" class="flow-text ">Test Experience Years</label>
+    </div>
+  </div>
+  <div class="row" [hidden]="!isAddTestUser">
+    <button name="addTestUser" class="btn btn-info btn-block" (click)=addTestUser()>
+                <i class="material-icons left">add</i>Add Test User</button>
+  </div>
+  <div class="row" [hidden]="!isAddTestUser">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>User Email</th>
+          <th>Experience Year</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of onlineTestUsers; let index = index" [hidden]="user.is_deleted" style="cursor:hand;">
+          <td>{{user.user_name}}</td>
+          <td>{{user.user_email}}</td>
+          <td>{{user.user_exp_year}}</td>
+          <td><a (click)="deleteOnlineTestUser(user, index)">delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row" [hidden]="isAddTestUser">
+    <table class="table TFtable">
+
+      <tr style="background: #dae5f4;">
+        <th></th>
+        <th>User Name</th>
+        <th>User Email</th>
+        <th>Experience Year</th>
+      </tr>
+
+      <tr *ngFor="let user of users">
+        <td><input id="{{user.user_id}}" type="checkbox" [(ngModel)]="user.is_selected" [ngModelOptions]="{standalone: true}"
+            class="validate">
+          <label attr.for="{{user.user_id}}"></label></td>
+        <td>{{user.user_name}}</td>
+        <td>{{user.user_email}}</td>
+        <td>{{user.user_exp_year}}</td>
+      </tr>
+
+    </table>
+  </div>
+  <div class="row" [hidden]="!isAddTestUser">
+    <button class="btn waves-effect waves-light" type="button" name="action" (click)=saveOnlineTest()>
+            Submit<i class="material-icons right">send</i>
+        </button>
+  </div>
+  <div class="row" [hidden]="isAddTestUser">
+    <button name="addUser" class="btn btn-info btn-block" (click)=insertTestUser()>
+            <i class="material-icons left">add</i>Insert Test User
+        </button>
+  </div>
+</div>

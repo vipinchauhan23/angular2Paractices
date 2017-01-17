@@ -1,0 +1,73 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    //$('select').material_select();
+  });
+</script>
+
+<div class="container ">
+  <div materialize class="col s12">
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input class="validate active" id="user_email" type="text" placeholder="User Email" [(ngModel)]="model.user_email" [ngModelOptions]="{standalone: true}"
+          (blur)="searchUserByEmail()">
+        <label for="user_email" class="active">User Email</label>
+      </div>
+      <div class="input-field col s6">
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input class="ng-valid ng-dirty ng-touched flow-text" type="text" id="user_name" placeholder="Name" [disabled]="disabled"
+          [(ngModel)]="model.user_name" [ngModelOptions]="{standalone: true}" />
+        <label for="user_name">Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="ng-valid ng-dirty ng-touched flow-text" type="text" id="user_mobile_no" placeholder="Mobile No" [disabled]="disabled"
+          [(ngModel)]="model.user_mobile_no" [ngModelOptions]="{standalone: true}" />
+        <label for="user_mobile_no">Mobile No</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <textarea id="user_address" class="materialize-textarea" placeholder="" [disabled]="disabled" [(ngModel)]="model.user_address"
+          [ngModelOptions]="{standalone: true}"></textarea>
+        <label for="user_address">Address</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="checkbox" id="is_fresher" [disabled]="disabled" [(ngModel)]="model.is_fresher" [ngModelOptions]="{standalone: true}"
+        />
+        <label for="is_fresher">Is Fresher</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input class="ng-valid ng-dirty ng-touched flow-text" id="user_exp_month" placeholder="Total Questions" type="number" [disabled]="disabled"
+          [(ngModel)]="model.user_exp_month" [ngModelOptions]="{standalone: true}">
+        <label for="user_exp_month" class="active">Experience Month</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="ng-valid ng-dirty ng-touched flow-text" id="user_exp_year" placeholder="Total Questions" type="number" [disabled]="disabled"
+          [(ngModel)]="model.user_exp_year" [ngModelOptions]="{standalone: true}">
+        <label for="user_exp_year" class="active">Experience Year</label>
+      </div>
+    </div>
+    <div class="row" [hidden]="!disabled">
+      <span style="color:green">This User Already exist ! (You can also add this user to your company by clicking Save User Button)</span>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6"></div>
+      <div class="input-field col s6">
+        <a class="waves-effect waves-light btn" (click)=saveUser()>
+          <i class="material-icons left">save</i>Save User
+        </a>
+        <a class="waves-effect waves-light btn red" (click)=cancel()>
+          <i class="material-icons left">cancel</i>Cancel
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

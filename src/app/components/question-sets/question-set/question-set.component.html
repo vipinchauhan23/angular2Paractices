@@ -1,0 +1,132 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    //$('select').material_select();
+  });
+</script>
+<style type="text/css">
+  .TFtable {
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+  }
+  
+  .TFtable td {
+    padding: 7px;
+    border: 1px solid #dddddd;
+  }
+  /* provide some minimal visual accomodation for IE8 and below */
+  
+  .TFtable tr:hover {
+    background: #f9f9f9
+  }
+  
+  .row-background {
+    background: #e0ecf1
+  }
+</style>
+
+<div class="container ">
+  <div materialize class="col s12">
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input class="validate active" id="ques_set_title" type="text" placeholder="Question Set Title" [(ngModel)]="model.question_set_title"
+          [ngModelOptions]="{standalone: true}">
+        <label for="ques_set_title" class="active">Title</label>
+      </div>
+      <div class="input-field col s6">
+        <input class="validate ng-valid ng-dirty ng-touched flow-text" id="total_time" placeholder="Total Time" type="number"
+          [(ngModel)]="model.total_time" [ngModelOptions]="{standalone: true}">
+        <label for="total_time" class="active">Total Time</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input class="validate ng-valid ng-dirty ng-touched flow-text" id="total_questions" placeholder="Total Questions" type="number"
+          [(ngModel)]="model.total_questions" [ngModelOptions]="{standalone: true}">
+        <label for="total_questions" class="active">Total Questions</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="checkbox" id="is_randomize" [(ngModel)]="model.is_randomize" [ngModelOptions]="{standalone: true}" />
+        <label for="is_randomize">Is Randomize</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select [(ngModel)]="model.option_series_id" name="selectedOptionSeries" materialize="material_select" [materializeSelectOptions]="optionSeries">
+                    <option value="0" disabled selected>Choose your Series</option>
+                    <option *ngFor="let optSeries of optionSeries" [value]="optSeries.option_series_id">{{optSeries.option_series_name}}</option>
+                </select>
+        <label for="selectedOptionSeries" class="active" style="top:2px;">Select Option Series</label>
+      </div>
+    </div>
+    <div class="row" [hidden]="isAddQuestion">
+      <div class="input-field col s6"></div>
+      <div class="input-field col s6">
+        <a class="waves-effect waves-light btn" (click)=showQuestions()>
+          <i class="material-icons left">add</i>Add Questions
+        </a>
+      </div>
+    </div>
+    <div class="row" [hidden]="isAddQuestion">
+      <div class="input-field col s12">
+        <table class="table TFtable">
+          <tr style="background: #dae5f4;">
+            <td>Question Description</td>
+            <td></td>
+          </tr>
+          <tr *ngFor="let ques of model.question_set_questions; let index=index" style="cursor:hand;" [hidden]="ques.is_deleted">
+            <td>{{ques.question_description}}</td>
+            <td><a (click)="deleteSetQuestion(ques, index)">delete</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row" [hidden]="!isAddQuestion">
+      <div class="row">
+        <div class="input-field col s6">
+          <select [(ngModel)]="selectedTopic" name="selectedTopic" materialize="material_select" [materializeSelectOptions]="topics"
+            (ngModelChange)=getQuestions($event)>
+                    <option value="0" disabled selected>Choose your option</option>
+                    <option *ngFor="let topic of topics" [value]="topic.topic_id">{{topic.topic_title}}</option>
+                </select>
+          <label for="selectedTopic" class="active" style="top:2px;">Select Topic</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <table class="table TFtable">
+            <tr style="background: #dae5f4;">
+              <td></td>
+              <td>Questions</td>
+            </tr>
+            <tr *ngFor="let ques of questions" style="cursor:hand;">
+              <td>
+                <input id="{{ques.question_id}}" type="checkbox" [(ngModel)]="ques.is_selected" [ngModelOptions]="{standalone: true}" class="validate">
+                <label attr.for="{{ques.question_id}}"></label>
+              </td>
+              <td>{{ques.question_description}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6"></div>
+        <div class="input-field col s6">
+          <a class="waves-effect waves-light btn" (click)=addQuestionsInQuestionSet()>
+            <i class="material-icons left">add</i>Add Question in question set
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6"></div>
+      <div class="input-field col s6">
+        <a class="waves-effect waves-light btn" (click)=saveQuestionSet()>
+          <i class="material-icons left">save</i>Save Question Set
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

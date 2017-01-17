@@ -1,0 +1,41 @@
+<!--component html goes here -->
+<!--component html goes here -->
+<div class="container">
+	<table class="striped">
+		<thead>
+			<tr>
+        <th data-field="id">Transaction Type</th>
+				<th data-field="id">Employee Name</th>
+				<th data-field="price">Amount</th>
+        <th data-field="id">Date</th>
+				<th data-field="price">Current Balance</th>
+				<th data-field="price">Edit</th>
+				<th data-field="price">Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr *ngFor="let trans of model">
+        <td>{{trans.transaction_type}}
+				<td>{{trans.employee_name}}</td>
+				<td>{{trans.amount}}</td>
+        <td>{{trans.date}}</td>
+				<td>{{trans.balance}}</td>
+				<td>
+					<button class="btn-floating btn-Medium green" title="edit" (click)="showEmployeeTransaction(trans.employee_transaction_id)">
+            <i class="Medium material-icons">mode_edit</i>
+            </button>
+				</td>
+				<td>
+					<a class="btn-floating btn-Medium red" title="remove" (click)="removeItem(trans.employee_transaction_id)">
+						<i class="Medium material-icons">delete</i>
+					</a>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+	<button class="waves-effect waves-light btn" (click)="showEmployeeTransaction(0)"><i class="material-icons left">add</i>Add EmployeeTransaction</button>
+</div>
+
+ 

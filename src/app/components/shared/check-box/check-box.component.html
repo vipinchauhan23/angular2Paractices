@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="input-field col s12">
+    <input id="{{model.option_id}}" type="checkbox" [(ngModel)]="model.is_correct" class="validate">
+    <label attr.for="{{model.option_id}}">{{model.description}}</label>
+  </div>
+</div>
+<!--
+<div class="input-field col s6 selectss">
+  <select [(ngModel)]="selectedOption" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions">
+                <option value="" disabled selected>Choose your option</option>
+                <option *ngFor="let option of selectOptions" [value]="option.value">{{option.name}}</option>
+              </select>
+
+</div>
+<div class="row">
+  <input materialize="pickadate" type="date" class="datepicker">
+</div>-->

@@ -1,0 +1,7 @@
+<div class="row">
+  <div class="input-field col s12">
+    <input name="option" id="{{model.description}}" [checked]="model.is_correct" (change)="model.is_correct=!model.is_correct"
+      type="radio">
+    <label attr.for="{{model.description}}"> {{model.description}}</label>
+  </div>
+</div>

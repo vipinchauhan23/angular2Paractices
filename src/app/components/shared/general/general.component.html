@@ -1,0 +1,202 @@
+<!--component html goes here -->
+<form materialize formGroupName="generalModel" class="col s12" id="general">
+  <label for="general" class="flow-text active" style="margin-left:40%">General</label>
+  <div class="row">
+    <div class="input-field col s5">
+      <input class="validate" id="telephone" type="tel" placeholder="Telephone" formControlName="telephone">
+      <label for="telephone" class="flow-text active">Telephone</label>
+      <small style="color:red;" [hidden]="this.bpForm.controls.generalModel.controls.telephone.valid">
+       Please enter Telephone.
+        </small>
+    </div>
+    <div style='margin-left:10%;' class="input-field col s5">
+      <input class="validate" id="connectPerson" type="text" placeholder="Connect Person" formControlName="contact_person">
+      <label for="contactPerson" class="flow-text active">Contact Person</label>
+      <small style="color:red;" [hidden]="this.bpForm.controls.generalModel.controls.contact_person.valid">
+       Please enter Contact Person.
+        </small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s5">
+      <input class="validate" id="mobile" type="tel" placeholder="Mobile Phone" formControlName="mobile_phone">
+      <label for="mobile" class="flow-text active">Mobile Phone</label>
+      <small style="color:red;" [hidden]="this.bpForm.controls.generalModel.controls.mobile_phone.valid">
+       Please enter Mobile.
+        </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s5">
+      <input class="validate" id="email" type="email" placeholder="Mobile Phone" formControlName="email">
+      <label for="email" class="flow-text active">Email</label>
+      <small style="color:red;" [hidden]="this.bpForm.controls.generalModel.controls.email.valid">
+       Please enter email.
+        </small>
+    </div>
+    <div style='margin-left:10%;' class="input-field col s5">
+      <textarea class="materialize-textarea" type="text" placeholder="Remark" formControlName="remark"></textarea>
+      <label for="remark" class="flow-text active">Remark</label>
+      <small style="color:red;" [hidden]="this.bpForm.controls.generalModel.controls.remark.valid">
+       Please enter Remark.
+        </small>
+    </div>
+    <div class="input-field col s5">
+      <input class="validate" id="webSite" type="email" placeholder="Web Site" formControlName="web_site">
+      <label for="webSite" class="flow-text active">Web Site</label>
+      <small style="color:red;" [hidden]="this.bpForm.controls.generalModel.controls.web_site.valid">
+       Please enter WebSite.
+        </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s5">
+      <select formControlName="shipping_id" materialize="material_select" [materializeSelectOptions]="shippingTypeArray" required>
+                        <option value="0" disabled selected>Shipping Type</option>
+                        <option *ngFor="let shipType of shippingTypeArray" [value]="shipType.shipping_id">{{shipType.shipping_type}}</option>
+                    </select>
+      <label for="shipping_id" class="active" style="top:2px;">Shipping Type</label>
+      <small style="color:red;" [hidden]="this.bpForm.controls.generalModel.controls.shipping_id.valid">
+       Please Shipping Type.
+        </small>
+    </div>
+
+    <div style='margin-left:10%;' class="input-field col s5">
+      <select formControlName="sales_employee_id" name="salesEmployee" materialize="material_select" [materializeSelectOptions]="salesEmployeeArray">
+                        <option value="0" disabled selected>Sales Employee</option>
+                        <option *ngFor="let salesEmployee of salesEmployeeArray" [value]="salesEmployee.sales_employee_id">{{salesEmployee.sales_employee}}</option>
+                    </select>
+      <label for="salesEmployee" class="active" style="top:2px;">Sales Employee</label>
+      <small style="color:red;" [hidden]="this.bpForm.controls.generalModel.controls.sales_employee_id.valid">
+       Please select Sales Employee.
+        </small>
+    </div>
+  </div>
+
+  <!--<div class="row">
+    <div class="input-field col s5">
+      <input class="validate" id="Password" type="password" placeholder="Password" formControlName="password">
+      <label for="password" class="flow-text active">Password</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.password.valid">
+       Please enter Password.
+        </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s5">
+      <input class="validate" id="bpProject" type="text" placeholder="BP Project" formControlName="bp_project">
+      <label for="bpProject" class="flow-text active">BP Project</label>
+       <small style="color:red;" [hidden]="this.generalForm.controls.bp_project.valid">
+       Please enter Business Partner Project.
+        </small>
+    </div>
+    <div style='margin-left:10%;' class="input-field col s5">
+      <input class="validate" id="bpChannelCode" type="text" placeholder="BP Channel Code" formControlName="bp_channel_code">
+      <label for="bpChannelCode" class="flow-text active">BP Channel Code</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.bp_channel_code.valid">
+       Please enter Business Partner Channel Code.
+        </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s5">
+      <select formControlName="industry_id" name="industry" materialize="material_select" [materializeSelectOptions]="industryArray">
+                    <option value="0" disabled selected>Industry</option>
+                    <option *ngFor="let indust of industryArray" [value]="indust.industry_id">{{indust.industry}}</option>
+                </select>
+      <label for="industry" class="active" style="top:2px;">Industry</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.industry_id.valid">
+       Please Select Industry
+        </small>
+    </div>
+
+    <div class="input-field col s5" style='margin-left:10%;'>
+      <input class="validate" id="technician" type="text" placeholder="Technician" formControlName="technician">
+      <label for="technician" class="flow-text active">Technician</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.technician.valid">
+       Please enter Technician.
+        </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s5">
+      <input class="validate" id="aliasName" type="text" placeholder="Alias Name" formControlName="alias_name">
+      <label for="aliasName" class="flow-text active">Alias Name</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.alias_name.valid">
+       Please enter Alias Name.
+        </small>
+    </div>
+    <div class="input-field col s5" style='margin-left:10%;'>
+      <select formControlName="language_id" name="language" materialize="material_select" [materializeSelectOptions]="languageArray">
+                    <option value="0" disabled selected>Language</option>
+                    <option *ngFor="let lan of languageArray" [value]="lan.language_id">{{lan.language}}</option>
+                </select>
+      <label for="language" class="active" style="top:2px;">Language</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.language_id.valid">
+       Please select Language.
+        </small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s5">
+      <input type="checkbox" id="sendMarketingContent" formControlName="send_marketing_content" />
+      <label for="sendMarketingContent">Block Sending Marketing Content</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.send_marketing_content.valid">
+       Please enter Sender Marketing Content.
+        </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s4">
+      <input type="checkbox" id="active" formControlName="active" />
+      <label for="active">Active</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.active.valid">
+       Please select Active.
+        </small>
+    </div>
+    <div class="input-field col s4">
+      <input type="checkbox" id="inactive" formControlName="inactive" />
+      <label for="inactive">Inactive</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.inactive.valid">
+       Please select Inactive.
+        </small>
+    </div>
+    <div class="input-field col s4">
+      <input type="checkbox" id="advance" formControlName="advance" />
+      <label for="advance">Advance</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.advance.valid">
+       Please select Advance.
+        </small>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s4">
+      <input class="validate" id="to" type="text" placeholder="To" formControlName="to">
+      <label for="to" class="flow-text active">To</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.to.valid">
+       Please Shipping Type.
+        </small>
+    </div>
+    <div class="input-field col s4">
+      <input class="validate" id="from" type="text" placeholder="From" formControlName="from">
+      <label for="from" class="flow-text active">From</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.from.valid">
+       Please Shipping Type.
+        </small>
+    </div>
+    <div class="input-field col s4">
+      <input class="validate" id="userRemark" type="text" placeholder="Remark" formControlName="user_remark">
+      <label for="userRemark" class="flow-text active">Remark</label>
+      <small style="color:red;" [hidden]="this.generalForm.controls.user_remark.valid">
+       Please Shipping Type.
+        </small>
+    </div>
+  </div>-->
+</form>

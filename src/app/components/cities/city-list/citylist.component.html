@@ -1,0 +1,50 @@
+
+<div class="container">
+  <table class="striped">
+    <thead>
+      <tr>   
+        <th data-field="name">State Name</th>
+        <th data-field="id">City Name</th>
+        <th data-field="price">IsActive</th>
+        <th data-field="price">Edit</th>
+        <th data-field="price">Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let city of model">
+        <td>{{city.state_name}}</td>
+        <td>{{city.city_name}}</td>
+        <td>{{city.is_active}}</td>
+        <td>
+          <button class="btn-floating btn-Medium green" title="edit" (click)="editCity(city.city_id)">
+            <i class="Medium material-icons">mode_edit</i>
+            </button>
+        </td>
+        <td>
+          <a class="btn-floating btn-Medium red" title="remove" (click)="removeItem(city)">
+            <i class="Medium material-icons">delete</i>
+          </a>
+        </td>
+
+      </tr>
+    </tbody>
+
+  </table>
+      <button class="waves-effect waves-light btn" (click)="showCity()"><i class="material-icons left">add</i>Add City</button>    
+</div>
+
+    <!-- Modal Trigger -->
+ <!-- <a class="waves-effect waves-light btn" href="#modal1">Modal</a> -->
+
+  <!-- Modal Structure -->
+ <!-- <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>Are you sure City delete or not </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action waves-effect waves-green btn-flat">Yes</a>
+      <a href="#!" class=" modal-action waves-effect waves-red btn-flat">No</a>
+    </div>
+  </div> -->

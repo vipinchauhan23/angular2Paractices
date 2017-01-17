@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" id="company_title" type="text" placeholder="company name" [(ngModel)]="model.company_title" [ngModelOptions]="{standalone: true}">
+      <label for="company_title" class="flow-text active">Company Name</label>
+    </div>
+    <div class="input-field col s6">
+      <input class="validate" id="company_Address" type="text" placeholder="company_Address" [(ngModel)]="model.company_address"
+        [ngModelOptions]="{standalone: true}">
+      <label for="company_Address" class="flow-text active">Address</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" id="company_PhoneNo" type="text" placeholder="company_PhoneNo" [(ngModel)]="model.company_phone"
+        [ngModelOptions]="{standalone: true}">
+      <label for="company_phoneNo" class="flow-text active">PhoneNo</label>
+    </div>
+    <div class="input-field col s6">
+      <input class="validate" id="company_url" type="text" placeholder="company_url" [(ngModel)]="model.company_url" [ngModelOptions]="{standalone: true}">
+      <label for="company_url" class="flow-text active">Url</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" id="company_url" type="text" placeholder="company_url" [(ngModel)]="model.company_email" [ngModelOptions]="{standalone: true}">
+      <label for="company_url" class="flow-text active">Company EmailID</label>
+    </div>
+    <div class="input-field col s6">
+      <input class="validate" id="company_hr_phone" type="text" placeholder="company_hr_phone" [(ngModel)]="model.company_hr_phone"
+        [ngModelOptions]="{standalone: true}">
+      <label for="company_hr_phone" class="flow-text active">HR MobileNO</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" id="company_hr_emailid" type="text" placeholder="company_hr_emailid" [(ngModel)]="model.company_hr_emailid"
+        [ngModelOptions]="{standalone: true}">
+      <label for="company_hr_emailid" class="flow-text active">HR EmailID</label>
+    </div>
+    <div class="input-field col s6">
+      <input class="validate" id="smtp_host" type="text" placeholder="smtp_host" [(ngModel)]="model.smtp_host" [ngModelOptions]="{standalone: true}">
+      <label for="smtp_host" class="flow-text active">Smtp Host</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" id="smtp_port" type="text" placeholder="smtp_port" [(ngModel)]="model.smtp_port" [ngModelOptions]="{standalone: true}">
+      <label for="smtp_port" class="flow-text active ">Smtp Port</label>
+    </div>
+    <div class="input-field col s6">
+      <input class="validate" id="smtp_username" type="text" placeholder="smtp_username" [(ngModel)]="model.smtp_username" [ngModelOptions]="{standalone: true}">
+      <label for="smtp_username" class="flow-text active">Smtp Username</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input class="validate" id="smtp_password" type="text" placeholder="smtp_password" [(ngModel)]="model.smtp_password" [ngModelOptions]="{standalone: true}">
+      <label for="smtp_password" class="flow-text active">Smtp Password</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <button class="btn waves-effect waves-light" type="button" name="action" (click)=saveCompany()>{{btnText}}
+            <i class="material-icons right">send</i>
+        </button>
+    <!--<button _ngcontent-yhl-7=" " class="col s3 offset-s5">
+                <a class="waves-effect waves-light btn" (click)=addCompany();></a>
+                <br>
+            </button>-->
+  </div>
+</div>

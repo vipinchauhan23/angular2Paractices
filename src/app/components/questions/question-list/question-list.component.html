@@ -1,0 +1,80 @@
+
+
+<div style="margin:10px;">
+<div class="container_fluid">
+<div class="row" *ngFor="let question of model" >
+  <div class="col s10 m10 l10">{{question.question_description | stripHtml}}</div>
+  <div class="col s2 m2 l2" >  
+  <button class="btn waves-effect waves-light btn-small red" type="submit" name="action">Delete
+    <i class="material-icons left">delete</i>
+  </button>
+</div>
+<div class="col s12 m12 l12" >
+   <div class="col s1 m1 l1" [@flyInOut]="1">   
+<div class="question-text" >
+  <span>
+    {{question.QuestionSetCount}}
+  </span>
+
+  <span> 
+  Question Sets
+   </span>
+   </div>
+   </div>
+
+   <div class="col s1 m1 l1 " [@flyInOut]="1">   
+<div class="question-text">
+  <span>
+    {{question.OnlineTestCount}}
+  </span>
+  <span> 
+  Online Test
+    </span>
+   </div>
+   </div>
+
+<div class="col s1 m1 l1" [@flyInOut]="2">   
+<div class="question-text">
+  <span>
+    {{question.UserCount}}
+  </span>
+  <span> 
+  Users
+    </span>
+   </div>
+     </div>
+     <div class="col s1 m1 l1" [@flyInOut]="1">  
+   <div class="question-text">
+  <span>
+    {{question.OptionCount}}
+  </span>
+  <span> 
+   Options
+    </span>
+   </div>
+     </div>
+     <div class="col s1 m1 l1" [@flyInOut]="1">  
+   <div class="question-text">
+  <span>
+    {{question.CandidatePass}}
+  </span>
+  <span> 
+   pass
+    </span>
+   </div>
+     </div>
+     <div class="col s1 m1 l1" [@flyInOut]="3">  
+   <div class="question-text">
+  <span>
+    {{question.CandidateFail}}
+  </span>
+  <span> 
+   fail
+    </span>
+   </div>
+</div> 
+</div>
+
+</div> 
+</div> 
+</div>

@@ -1,0 +1,40 @@
+<!--component html goes here -->
+<div class="container">
+	<table class="striped">
+		<thead>
+			<tr>
+        <th data-field="id">Inventry type</th>
+				<th data-field="id">Name</th>
+				<th data-field="price">Addres</th>
+        <th data-field="id">Mobile</th>
+				<th data-field="price">Total</th>
+				<th data-field="price">Edit</th>
+				<th data-field="price">Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr *ngFor="let invent of model">
+        <td>{{invent.inventry_type}}
+				<td>{{invent.name}}</td>
+				<td>{{invent.address}}</td>
+        <td>{{invent.mobile_no}}</td>
+				<td>{{invent.total}}</td>
+				<td>
+					<button class="btn-floating btn-Medium green" title="edit" (click)="showInventry(invent.inventry_id)">
+            <i class="Medium material-icons">mode_edit</i>
+            </button>
+				</td>
+				<td>
+					<a class="btn-floating btn-Medium red" title="remove" (click)="removeItem(invent.inventry_id)">
+						<i class="Medium material-icons">delete</i>
+					</a>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+	<button class="waves-effect waves-light btn" (click)="showInventry(0)"><i class="material-icons left">add</i>Add Inventry</button>
+</div>
+
+ 

@@ -1,0 +1,19 @@
+<div materialize style='margin-left:10%; margin-top:10%'>
+	<div class="row" >
+		<div class="input-field col s9">
+			<input class="validate" id="country_name" type="text" placeholder="Country Name" [(ngModel)]="model.country_name" [ngModelOptions]="{standalone: true}">
+			<label for="country_name" class="flow-text active">Country Name</label>
+		</div>
+		<div class="input-field col s9">
+			<input class="validate" id="country_code" type="text" placeholder="Country Code" [(ngModel)]="model.country_code" [ngModelOptions]="{standalone: true}">
+			<label for="country_code" class="flow-text active">Country Code</label>
+		</div>
+
+		<div class="input-field col s9">
+			<input type="checkbox" id="is_active" [(ngModel)]="model.is_active" [ngModelOptions]="{standalone: true}" />
+			<label for="is_active">Is Active</label>
+		</div>
+	</div>
+
+	<button class="waves-effect waves-light btn" type="button" (click)="saveCountry()">{{btnText}}</button>
+</div>

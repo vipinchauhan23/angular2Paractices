@@ -1,0 +1,40 @@
+<!--component html goes here -->
+<div class="container">
+	<table class="striped">
+		<thead>
+			<tr>
+        <th data-field="id">Product Name</th>
+				<th data-field="id">Product Code</th>
+				<th data-field="price">Item Rate</th>
+        <th data-field="id">Quantity</th>
+				<th data-field="price">Total</th>
+				<th data-field="price">Edit</th>
+				<th data-field="price">Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr *ngFor="let product of model">
+        <td>{{product.product_name}}
+				<td>{{product.product_code}}</td>
+				<td>{{product.item_rate}}</td>
+        <td>{{product.quantity}}</td>
+				<td>{{product.item_rate * product.quantity}}</td>
+				<td>
+					<button class="btn-floating btn-Medium green" title="edit" (click)="showProduct(product.product_id)">
+            <i class="Medium material-icons">mode_edit</i>
+            </button>
+				</td>
+				<td>
+					<a class="btn-floating btn-Medium red" title="remove" (click)="removeItem(product.product_id)">
+						<i class="Medium material-icons">delete</i>
+					</a>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+	<button class="waves-effect waves-light btn" (click)="showProduct(0)"><i class="material-icons left">add</i>Add Product</button>
+</div>
+
+ 

@@ -1,0 +1,18 @@
+
+.question-text
+{
+ margin-top:5px;
+ padding: 0px;
+ vertical-align:top;
+ white-space: nowrap;
+ background: rgba(0,0,0,.38);
+ text-align: center;
+}
+.question-text span{
+
+ color:white;
+    font-size: 11px;
+    padding: 0px 2px 2px 2px;
+ white-space: nowrap;
+ text-align: center;
+}

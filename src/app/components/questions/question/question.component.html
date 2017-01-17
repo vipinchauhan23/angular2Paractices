@@ -1,0 +1,62 @@
+<div>
+  <div froala-edtior="" class="ng-scope">
+    <div class="text-editor" id="1470986671642" em-height-source="">
+      <div class="container-fluid row s-logs-col text-editor-container">
+        <div class="col l12 m12 s12">
+          <div class="" style="">
+            <textarea [froalaEditor]="froalaOptions" [(froalaModel)]="model.question_description"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input [(ngModel)]="model.answer_explanation" [ngModelOptions]="{standalone: true}" placeholder="Add answer explanation"
+        id="answer_explanation" type="text" class="validate">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <select [(ngModel)]="model.topic_id" name="model.topic_id" materialize="material_select">
+                    <option value="0" disabled selected>Choose your topic</option>
+                    <option *ngFor="let topic of topics" [value]="topic.topic_id">{{topic.topic_title}}</option>
+                </select>
+      <label for="model.topic_id" class="active" style="top:2px;">Select Topic</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6 switch">
+      <label>
+                multiple
+                <input type="checkbox" [checked]="model.is_multiple_option" [value]="model.is_multiple_option"  (change)="valueChanged($event.target.value)">
+                <span class="lever"></span>
+                single
+              </label>
+    </div>
+  </div>
+
+  <div *ngIf="model.is_multiple_option" class="row">
+    <div *ngFor="let option of model.options">
+      <app-check-box [model]="option"></app-check-box>
+    </div>
+  </div>
+  <div *ngIf="!model.is_multiple_option" class="row">
+    <div *ngFor="let option of model.options">
+      <app-radio [model]="option"></app-radio>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input [(ngModel)]="newOption" name="newOption" placeholder="add option" id="newOption" type="text" class="validate">
+      <input type="button" value="Add Option" (click)="addOption()" class="validate">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="button" value="Save" (click)="saveQuestion()" class="validate">
+      <input type="button" value="Cancel" (click)="cancel()" class="validate">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div>
+	<table class="striped">
+		<thead>
+			<tr>
+				<th data-field="name">Business Partner Type</th>
+				<th data-field="id">Name</th>
+				<th data-field="price">Foreign Name</th>
+				<th data-field="id"> Group Name</th>
+				<th data-field="price">Account Balance</th>
+				<th data-field="id"> Deliveries</th>
+				<th data-field="price">Orders</th>
+				<th data-field="price">Opportunities</th>
+				<th data-field="price">Edit</th>
+				<th data-field="price">Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr *ngFor="let bp of model">
+				<td>{{bp.businessPartnertype_name}}</td>
+				<td>{{bp.name}}</td>
+				<td>{{bp.foreign_name}}</td>
+        <td>{{bp.group_name}}</td>
+        <td>{{bp.account_balance}}</td>
+				<td>{{bp.deliveries}}</td>
+				<td>{{bp.orders}}</td>
+        <td>{{bp.opportunities}}</td>
+				<td>
+					<button class="btn-floating btn-Medium green" title="edit" (click)="showBusinessPartner(bp.businesspartnermaster_id)">
+            <i class="Medium material-icons">mode_edit</i>
+            </button>
+				</td>
+				<td>
+					<a class="btn-floating btn-Medium red" title="remove" (click)="removeItem(bp)">
+						<i class="Medium material-icons">delete</i>
+					</a>
+				</td>
+
+			</tr>
+		</tbody>
+
+	</table>
+	<button class="waves-effect waves-light btn" (click)="showBusinessPartner(0)"><i class="material-icons left">add</i>Add BusinessPartner</button>
+</div>
+
+   <!--<a class="waves-effect waves-light btn modal-trigger">Modal</a>
+
+      
+      <div class="modal" id="modal1" materialize="modal" style="z-index: 1003; display: none; opacity: 0;">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a class="waves-effect waves-green btn-flat">Close</a>
+          <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div>-->

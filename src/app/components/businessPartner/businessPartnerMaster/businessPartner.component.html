@@ -1,0 +1,155 @@
+
+<form materialize [formGroup]="bpForm" novalidate (submit)="saveBusinessPartnerData()">
+  <div materialize style='margin:5%'>
+    <div class="row">
+      <div class="input-field col s5">
+        <select formControlName="businessPartnerMasterType"  materialize="material_select" [materializeSelectOptions]="businessPartnertypes" required>
+                        <option value="0" disabled selected>Business Partner Type</option>
+                        <option *ngFor="let bp of businessPartnertypes" [value]="bp.id">{{bp.businessPartnertype}}</option>
+                    </select>
+        <label for="businessPartnerMasterType" class="active" style="top:2px;">Business Partner Type</label>
+        <small [hidden]="this.bpForm.controls.businessPartnerMasterType.valid">
+       Please select Business Partner Type.
+        </small>
+      </div>
+      <div style='margin-left:10%;' class="input-field col s5">
+        <select [(ngModel)]="model.currency_type" formControlName="currency_type"  materialize="material_select"
+         [materializeSelectOptions]="currencyTypes" >
+                        <option value="0" disabled selected>Currency Type</option>
+                        <option *ngFor="let currency of currencyTypes" [value]="currency.id">{{currency.currency_type}}</option>
+                    </select>
+        <label for="currency_type" class="active" style="top:2px;">Currency Type</label>
+         <small [hidden]="this.bpForm.controls.currency_type.valid">
+       Please select Currency Type.
+        </small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5">
+        <input class="validate" id="name" type="text" formControlName="name" placeholder="Name">
+        <label for="name" class="flow-text active">Name</label>
+        <small style="color:red;" [hidden]="this.bpForm.controls.name.valid">
+        Name is required (minimum 5 characters)..
+        </small>
+      </div>
+      <div style='margin-left:10%;' class="input-field col s5">
+        <input  class="validate" id="account_balance" formControlName="account_balance" type="number" placeholder="Account Balance">
+        <label for="account_balance" class="flow-text active">Account Balance</label>
+        <small style="color:red;" [hidden]="this.bpForm.controls.account_balance.valid">
+       Please enter Account Balance.
+        </small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5">
+        <input formControlName="foreign_name" class="validate" id="foreign_name" type="text" placeholder="Foreign Name" required>
+        <label for="foreign_name" class="flow-text active">Foreign Name</label>
+        <small style="color:red;" [hidden]="this.bpForm.controls.foreign_name.valid">
+        Foreign Name is required (minimum 5 characters)..
+        </small>
+      </div>
+      <div style='margin-left:10%;' class="input-field col s5">
+        <input formControlName="deliveries" class="validate" id="deliveries" type="number" placeholder="Deliveries" required>
+        <label for="deliveries" class="flow-text active">Deliveries</label>
+        <small style="color:red;" [hidden]="this.bpForm.controls.deliveries.valid">
+        Deliveries is required 
+        </small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5">
+        <select formControlName="group_id" materialize="material_select" [materializeSelectOptions]="groups" required>
+                    <option value="0" disabled selected>Choose Group</option>
+                    <option *ngFor="let group of groups" [value]="group.group_id">{{group.group_name}}</option>
+                </select>
+        <label for="group" class="active" style="top:2px;">Select Group</label>
+        <small style="color:red;" [hidden]="this.bpForm.controls.group_id.valid">
+        Group is required 
+        </small>
+      </div>
+
+      <div class="input-field col s5" style='margin-left:10%;'>
+        <input class="validate" id="orders" type="number" placeholder="Orders" formControlName="orders" required>
+        <label for="orders" class="flow-text active">Orders</label>
+        <small style="color:red;" [hidden]="this.bpForm.controls.orders.valid">
+        Orders is required (minimum 5 characters)..
+        </small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5">
+        <select formControlName="currency" materialize="material_select" [materializeSelectOptions]="currencyArray" required>
+                    <option value="0" disabled selected>currency</option>
+                    <option *ngFor="let curr of currencyArray" [value]="curr.id">{{curr.currency}}</option>
+                </select>
+        <label for="currency" class="active" style="top:2px;">Currency</label>
+        <small style="color:red;" [hidden]="this.bpForm.controls.currency.valid">
+        Currency is required 
+        </small>
+      </div>
+
+      <div class="input-field col s5" style='margin-left:10%;'>
+        <input formControlName="opportunities" class="validate" id="opportunities" type="number" placeholder="Opportunities" required>
+        <label for="opportunities" class="flow-text active">Opportunities</label>
+        <small style="color:red;" [hidden]="this.bpForm.controls.opportunities.valid">
+        Opportunities is required 
+        </small>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s5">
+        <input formControlName="federal_tax_id" class="validate" id="federal_tax_id" type="text" placeholder="Federal Tax ID" required>
+        <label for="federal_tax_id" class="flow-text active">Federal Tax ID</label>
+        <small style="color:red;" [hidden]="this.bpForm.controls.federal_tax_id.valid">
+        Federal Tax ID is required (minimum 5 characters)..
+        </small>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs" materialize="tabs" ng-reflect-materialize="tabs">
+          <li class="tab col s3"><a href="#general" class="active">General</a></li>
+          <li class="tab col s3"><a class="" href="#contactPersons">Contact Persons</a></li>
+          <li class="tab col s3"><a href="#address" class="">Address</a></li>
+          <li class="tab col s3"><a class="" href="#paymentTerms">Payment Terms</a></li>
+          <li class="tab col s3 disabled"><a href="#paymentRun" class="">Payment Run</a></li>
+          <li class="tab col s3"><a class="" href="#accounting">Accounting</a></li>
+          <li class="tab col s3"><a href="#properties" class="">Properties</a></li>
+          <div class="indicator" style="right: 538.75px; left: 269.375px;"></div>
+        </ul>
+      </div>
+      <div class="col s12" id="general" style="">
+        <general [generalModal]="model.general"></general>
+      </div>
+      <div class="col s12" id="contactPersons" style="">
+        <label for="contactPersons" class="flow-text active" style="margin-left:40%">Contact Persons</label>
+      </div>
+      <div class="col s12" id="address" style="display: none;">
+        <label for="address" class="flow-text active" style="margin-left:40%"> Address</label>
+      </div>
+      <div class="col s12" id="paymentTerms" style="">
+        <label for="paymentTerms" class="flow-text active" style="margin-left:40%">Payment Terms</label>
+      </div>
+      <div class="col s12" id="paymentRun" style="">
+        <label for="paymentRun" class="flow-text active" style="margin-left:40%">Payment Run</label></div>
+      <div class="col s12" id="accounting" style="display: none;">
+        <label for="accounting" class="flow-text active" style="margin-left:40%">Accounting</label> </div>
+      <div class="col s12" id="properties" style="display: none;">
+        <label for="properties" class="flow-text active" style="margin-left:40%">Properties</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s2" style='margin-left:10%;'>
+        <button class="waves-effect waves-light btn" type="submit" name="action">save</button>
+      </div>
+      <div class="input-field col s3" style='margin-left:10%;'>
+        <button class="waves-effect waves-light btn red" type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</form>

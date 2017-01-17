@@ -1,0 +1,54 @@
+<style type="text/css">
+  .TFtable {
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+  }
+  
+  .TFtable td {
+    padding: 7px;
+    border: 1px solid #dddddd;
+  }
+  /* provide some minimal visual accomodation for IE8 and below */
+  
+  .TFtable tr:hover {
+    background: #f9f9f9
+  }
+  
+  .row-background {
+    background: #e0ecf1
+  }
+</style>
+
+<div class="row">
+  <h2>{{title}}</h2>
+
+  <div class="form-group">
+
+    <div class="col-md-6">
+
+      <button name="addUser" class="btn btn-info btn-block pull-right" (click)="addUser()">+ Add User</button>
+      <table class="table TFtable">
+        <tr style="background: #dae5f4;">
+          <td>Name</td>
+          <td>Email</td>
+          <td>Mobile No</td>
+          <td>Fresher</td>
+          <td>Experience</td>
+          <td></td>
+        </tr>
+        <tr *ngFor="let user of model" style="cursor:hand;" [ngClass]="{'row-background': user.user_id==selectedUserId }">
+          <td><a (click)="selectUser(user)">{{user.user_name}}</a></td>
+          <td>{{user.user_email}}</td>
+          <td>{{user.user_mobile_no}}</td>
+          <td>{{user.is_fresher}}</td>
+          <td><span>{{user.user_exp_year}} Year {{user.user_exp_month}} Month</span></td>
+          <td><a>delete</a></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+
+  </div>
+</div>

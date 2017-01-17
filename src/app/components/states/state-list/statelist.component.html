@@ -1,0 +1,33 @@
+<div class="container">
+  <table class="striped">
+    <thead>
+      <tr>   
+        <th data-field="name">Country Name</th>
+       <th data-field="id">State Name</th>
+        <th data-field="price">IsActive</th>
+        <th data-field="price">Edit</th>
+        <th data-field="price">Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let state of model">
+        <td>{{state.country_name}}</td>
+        <td>{{state.state_name}}</td>
+        <td>{{state.is_active}}</td>
+        <td>
+          <button class="btn-floating btn-Medium green" title="edit" (click)="editState(state.state_id)">
+            <i class="Medium material-icons">mode_edit</i>
+            </button>
+        </td>
+        <td>
+          <a class="btn-floating btn-Medium red" title="remove" (click)="removeItem(state)">
+            <i class="Medium material-icons">delete</i>
+          </a>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+      <button class="waves-effect waves-light btn" (click)="showState()"><i class="material-icons left">add</i>Add State</button>    
+</div>

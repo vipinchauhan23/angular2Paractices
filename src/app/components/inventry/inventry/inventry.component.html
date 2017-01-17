@@ -1,0 +1,81 @@
+<!--component html goes here -->
+<div materialize style='margin-left:5%; margin-top:3%'>
+  <div class="row">
+    <div class="input-field col s9">
+      <select [(ngModel)]="model.type" name="selectTypeOption" materialize="material_select" [materializeSelectOptions]="inventryType">
+                    <option value="0" disabled selected>Choose Inventry Type</option>
+                    <option *ngFor="let invent of inventryType" [value]="invent.inventryType_id">{{invent.inventryType}}</option>
+                </select>
+      <label for="selectTypeOption" class="active" style="top:2px;">Select Inventry Type</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s4">
+      <input class="validate" id="name" type="text" placeholder="Name" [(ngModel)]="model.name" [ngModelOptions]="{standalone: true}">
+      <label for="name" class="flow-text active">Name</label>
+    </div>
+    <div class="input-field col s5">
+      <input class="validate" id="address" type="text" placeholder="Address" [(ngModel)]="model.address" [ngModelOptions]="{standalone: true}">
+      <label for="address" class="flow-text active">Address</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s4">
+      <input class="validate" id="mobile" type="text" placeholder="Mobile" [(ngModel)]="model.mobile_no" [ngModelOptions]="{standalone: true}">
+      <label for="mobile" class="flow-text active">Mobile</label>
+    </div>
+    <div class="input-field col s5">
+      <input class="validate" id="tin_no" type="text" placeholder="Tin No" [(ngModel)]="model.tin_no" [ngModelOptions]="{standalone: true}">
+      <label for="tin_no" class="flow-text active">Tin No</label>
+    </div>
+  </div>
+
+     <inventory-detail [inventoryDetailModel]="model.inventryDetails" (totalUpdated)="setTotal($event)"> </inventory-detail>
+
+  <button style=" margin-left:1%; margin-top:1%" class="btn-floating btn-Medium green" title="add" (click)="addInventryDetails()">
+            <i class="Medium material-icons">add</i>
+   </button>
+
+  <!-- <div class="row" *ngFor="let inventryDetailObject of model.inventryDetails;let i=index">
+    <div class="input-field col s3">
+      <select [(ngModel)]="inventryDetailObject.item_id" name="selectItemOption" materialize="material_select" [materializeSelectOptions]="itemArray"
+        (change)=onItemSelect($event.target.value,i)>
+                    <option value="0" disabled selected>Choose Item</option>
+                    <option *ngFor="let item of itemArray" [value]="item.items_id">{{item.item + " (" + item.stock + ")"}}</option>
+                </select>
+      <label for="selectItemOption" class="active" style="top:2px;">Select Item</label>
+    </div>
+    <div class="input-field col s3">
+      <input class="validate" id="item_rate" type="number" placeholder="Item Rate" [(ngModel)]="inventryDetailObject.item_rate"
+        [ngModelOptions]="{standalone: true}" (blur)="changeValue(i)">
+      <label for="item_rate" class="flow-text active">Item Rate</label>
+    </div>
+    <div class="input-field col s2">
+      <input class="validate" id="quantity" type="number" placeholder="Quantity" [(ngModel)]="inventryDetailObject.quantity" [ngModelOptions]="{standalone: true}"
+        (blur)="changeValue(i)">
+      <label for="quantity" class="flow-text active">Quantity</label>
+    </div>
+    <div class="input-field col s2">
+      <label for="total" class="flow-text active">Total: {{inventryDetailObject.sub_total}}</label>
+    </div>
+  </div>
+  -->
+
+  <div class="row">
+    <div class="input-field col s7"></div>
+    <div class="input-field col s4">
+      <label for="grandTotal" class="flow-text active">Grand Total: {{model.total}}</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s2"></div>
+    <div class="input-field col s6">
+      <a class="waves-effect waves-light btn" (click)="saveInventry()">
+        <i class="material-icons left">save</i> {{btnText}}
+      </a>
+      <a style="margin-left:2%;" class="waves-effect waves-light btn red" (click)="cancel()">
+        <i class="material-icons left">cancel</i> Cancel
+      </a>
+    </div>
+  </div>
+</div>

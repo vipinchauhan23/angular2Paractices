@@ -1,0 +1,51 @@
+<style type="text/css">
+  .TFtable {
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+  }
+  
+  .TFtable td {
+    padding: 7px;
+    border: 1px solid #dddddd;
+  }
+  /* provide some minimal visual accomodation for IE8 and below */
+  
+  .TFtable tr:hover {
+    background: #f9f9f9
+  }
+  
+  .row-background {
+    background: #e0ecf1
+  }
+</style>
+
+<div class="row">
+  <h2>{{title}}</h2>
+
+  <div class="form-group">
+
+    <div class="col-md-6">
+      <button name="addQuestionSet" class="btn btn-info btn-block pull-right" (click)="addQuestionSet()">+ Add Question Set</button>
+      <table class="table TFtable">
+        <tr style="background: #dae5f4;">
+          <td>Title</td>
+          <td>Total Time</td>
+          <td>Total Questions</td>
+          <td>Randomize</td>
+          <td></td>
+        </tr>
+        <tr *ngFor="let qset of model" style="cursor:hand;" [ngClass]="{'row-background': qset.question_set_id==selectedQuestionSetId }">
+          <td><a (click)="selectQuestionSet(qset)">{{qset.question_set_title}}</a></td>
+          <td>{{qset.total_time}}</td>
+          <td>{{qset.total_questions}}</td>
+          <td>{{qset.is_randomize}}</td>
+          <td><a>delete</a></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+
+  </div>
+</div>

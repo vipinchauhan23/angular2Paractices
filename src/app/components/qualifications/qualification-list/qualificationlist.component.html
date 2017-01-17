@@ -1,0 +1,31 @@
+<div class="container">
+  <table class="striped">
+    <thead>
+      <tr>
+        <th data-field="id">Qualification Name</th>
+        <th data-field="price">IsActive</th>
+        <th data-field="price">Edit</th>
+        <th data-field="price">Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let qualification of model">
+        <td>{{qualification.qualification_name}}</td>
+        <td>{{qualification.is_active}}</td>
+        <td>
+          <button class="btn-floating btn-Medium green" title="edit" (click)="editQualification(qualification.qualification_id)">
+            <i class="Medium material-icons">mode_edit</i>
+            </button>
+        </td>
+        <td>
+          <a class="btn-floating btn-Medium red" title="remove" (click)="removeItem(qualification)">
+            <i class="Medium material-icons">delete</i>
+          </a>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+      <button class="waves-effect waves-light btn" (click)="showQualification()"><i class="material-icons left">add</i>Add Qualification</button>    
+</div>

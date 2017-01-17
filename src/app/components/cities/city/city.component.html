@@ -1,0 +1,33 @@
+<div materialize style='margin-left:10%; margin-top:8%'>
+	<div class="row">
+
+		<div class="input-field col s9">
+			<select [(ngModel)]="model.country_id" name="selectCountryOption" materialize="material_select"
+       [materializeSelectOptions]="countries" (change)=countrySelected($event.target.value)>
+                    <option value="0" disabled selected>Choose Country</option>
+                    <option *ngFor="let country of countries" [value]="country.country_id">{{country.country_name}}</option>
+                </select>
+			<label for="selectCountryOption" class="active" style="top:2px;">Select Your Country</label>
+		</div>
+
+		<div class="input-field col s9">
+			<select [(ngModel)]="model.state_id" name="selectstateOption" materialize="material_select" [materializeSelectOptions]="stateByCountry">
+                    <option value="0" disabled selected>Choose State</option>
+                    <option *ngFor="let state of stateByCountry" [value]="state.state_id">{{state.state_name}}</option>
+                </select>
+			<label for="selectstateOption" class="active" style="top:2px;">Select Your State</label>
+		</div>
+
+		<div class="input-field col s9">
+			<input class="validate" id="city_name" type="text" placeholder="City Name" [(ngModel)]="model.city_name" [ngModelOptions]="{standalone: true}">
+			<label for="city_name" class="flow-text active">City Name</label>
+		</div>
+
+		<div class="input-field col s9">
+			<input type="checkbox" id="is_active" [(ngModel)]="model.is_active" [ngModelOptions]="{standalone: true}" />
+			<label for="is_active">Is Active</label>
+		</div>
+	</div>
+
+	<button class="waves-effect waves-light btn" type="button" (click)="saveCity()">{{btnText}}</button>
+</div>
