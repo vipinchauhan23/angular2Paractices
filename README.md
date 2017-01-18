@@ -1,1 +1,1 @@
-# angular2Paractices
+# angular2Practices
